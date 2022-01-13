@@ -1,0 +1,78 @@
+{
+    "sourceFile": "src/saga/Saga.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 15,
+            "patches": [
+                {
+                    "date": 1642085299565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1642085349476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import axios, { Axios } from 'axios'\r\n+import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n \r\n function* Login() {\r\n"
+                },
+                {
+                    "date": 1642088682513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         yield put({ type: 'Login', user: data.data })\r\n-\r\n+       console.log(data)\r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n"
+                },
+                {
+                    "date": 1642088818098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,15 @@\n \r\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        yield put({ type: 'Login', user: data.data })\r\n+        yield put({ type: 'Login_Action', user: data.data })\r\n        console.log(data)\r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n }\r\n function* mySaga (){\r\n-    yield takeLatest('Login', Login )\r\n+    yield takeLatest('Login_Action', Login )\r\n }\r\n export default mySaga\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642089133599,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n-       console.log(data)\r\n+      \r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n"
+                },
+                {
+                    "date": 1642091458639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n-      \r\n+        console.log(data)\r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n"
+                },
+                {
+                    "date": 1642091529075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,17 @@\n import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n-\r\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        yield put({ type: 'Login_Action', user: data.data })\r\n+        yield put({ type: 'user', user: data.data })\r\n         console.log(data)\r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n }\r\n function* mySaga (){\r\n-    yield takeLatest('Login_Action', Login )\r\n+    yield takeLatest('user', Login )\r\n }\r\n export default mySaga\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642091628296,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,15 +3,15 @@\n \r\n function* Login() {\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        yield put({ type: 'user', user: data.data })\r\n+        yield put({ type: 'Login_Action', user: data.data })\r\n         console.log(data)\r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n }\r\n function* mySaga (){\r\n-    yield takeLatest('user', Login )\r\n+    yield takeLatest('Login_Action', Login )\r\n }\r\n export default mySaga\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642091702592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,13 @@\n import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n function* Login() {\r\n+    console.log(1)\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n-        console.log(data)\r\n+        \r\n     } catch (e) { }\r\n }\r\n const getPostData = (params) => {\r\n return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n"
+                },
+                {
+                    "date": 1642091737647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n function* Login() {\r\n     console.log(1)\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n+        console.log(0)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n         \r\n     } catch (e) { }\r\n }\r\n"
+                },
+                {
+                    "date": 1642091851898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n-function* Login() {\r\n-    console.log(1)\r\n+function* Login(action) {\r\n+    console.log()\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        console.log(0)\r\n+\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n         \r\n     } catch (e) { }\r\n }\r\n"
+                },
+                {
+                    "date": 1642091868126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n function* Login(action) {\r\n-    console.log()\r\n+    \r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-\r\n+        console.log(data)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n         \r\n     } catch (e) { }\r\n }\r\n"
+                },
+                {
+                    "date": 1642091930063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import axios from 'axios'\r\n import { call, put, takeLatest } from 'redux-saga/effects'\r\n \r\n function* Login(action) {\r\n-    \r\n+    console.log(action.payload)\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         console.log(data)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n"
+                },
+                {
+                    "date": 1642092072036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,16 @@\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n         console.log(data)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n-        \r\n-    } catch (e) { }\r\n+\r\n+    } catch (e) { \r\n+        console.log('LOGIN ERROR: ' + e) \r\n+    }\r\n }\r\n const getPostData = (params) => {\r\n-return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n+    return axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n }\r\n-function* mySaga (){\r\n-    yield takeLatest('Login_Action', Login )\r\n+function* mySaga() {\r\n+    yield takeLatest('Login_Action', Login)\r\n }\r\n export default mySaga\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642092163264,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function* Login(action) {\r\n     console.log(action.payload)\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        console.log(data)\r\n+        console.log(data.data)\r\n         yield put({ type: 'Login_Action', user: data.data })\r\n \r\n     } catch (e) { \r\n         console.log('LOGIN ERROR: ' + e) \r\n"
+                },
+                {
+                    "date": 1642093948482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n function* Login(action) {\r\n     console.log(action.payload)\r\n     try {\r\n         const data = yield call(getPostData, action.payload)\r\n-        console.log(data.data)\r\n+        \r\n         yield put({ type: 'Login_Action', user: data.data })\r\n \r\n     } catch (e) { \r\n         console.log('LOGIN ERROR: ' + e) \r\n"
+                }
+            ],
+            "date": 1642085299565,
+            "name": "Commit-0",
+            "content": "import axios, { Axios } from 'axios'\r\nimport { call, put, takeLatest } from 'redux-saga/effects'\r\n\r\n\r\nfunction* Login() {\r\n    try {\r\n        const data = yield call(getPostData, action.payload)\r\n        yield put({ type: 'Login', user: data.data })\r\n\r\n    } catch (e) { }\r\n}\r\nconst getPostData = (params) => {\r\nreturn axios.post('https://sandbox.izivan.com.vn/api/login', params)\r\n}\r\nfunction* mySaga (){\r\n    yield takeLatest('Login', Login )\r\n}\r\nexport default mySaga"
+        }
+    ]
+}

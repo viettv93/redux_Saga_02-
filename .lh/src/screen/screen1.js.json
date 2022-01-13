@@ -1,0 +1,262 @@
+{
+    "sourceFile": "src/screen/screen1.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 61,
+            "patches": [
+                {
+                    "date": 1642084521902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1642085778137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React, { useState } from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n \r\n const Login = () => {\r\n-    const [value1, setValue] = useState('')\r\n+    const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const onPress = () => {\r\n \r\n     }\r\n@@ -14,16 +14,20 @@\n                 resizeMode=\"contain\" />\r\n             <Image source={require('../image/sally.png')}\r\n                 resizeMode=\"contain\" />\r\n             <TextInput\r\n-                onChangeText={ }\r\n+                onChangeText={(value1) => {\r\n+                    setValue1(value1)\r\n+                }} />\r\n                 value={value1}\r\n                 placeholder=\" Email\"\r\n                 style={{borderWidth: 0.5}} />\r\n             <View style={{ flexDirection: 'row', borderWidth: 0.5 }}>\r\n                 <TextInput placeholder=\"Password\"\r\n                     value={value2}\r\n-                    onChangeText={ } />\r\n+                    onChangeText={(value2) => {\r\n+                        setValue2(value2)\r\n+                    }} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642085981894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,14 @@\n import React, { useState } from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n+import { useDispatch } from \"react-redux\"\r\n \r\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n+    const disPatch= useDispatch()\r\n     const onPress = () => {\r\n-\r\n+     disPatch('user', {Email: value1, Password: value2})\r\n     }\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642086688421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n     const onPress = () => {\r\n      disPatch('user', {Email: value1, Password: value2})\r\n     }\r\n     return (\r\n-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>\r\n+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n                 source={require('../image/nen.png')}\r\n                 resizeMode=\"contain\" />\r\n             <Image source={require('../image/sally.png')}\r\n@@ -20,12 +20,13 @@\n                 onChangeText={(value1) => {\r\n                     setValue1(value1)\r\n                 }} />\r\n                 value={value1}\r\n-                placeholder=\" Email\"\r\n-                style={{borderWidth: 0.5}} />\r\n-            <View style={{ flexDirection: 'row', borderWidth: 0.5 }}>\r\n-                <TextInput placeholder=\"Password\"\r\n+                placeholder=\"Email\"\r\n+                style={{borderWidth: 0.5, width: '90%'}} />\r\n+            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '100%' }}>\r\n+                <TextInput \r\n+                placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n                         setValue2(value2)\r\n                     }} /> \r\n"
+                },
+                {
+                    "date": 1642086837571,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                 resizeMode=\"contain\" />\r\n             <TextInput\r\n                 onChangeText={(value1) => {\r\n                     setValue1(value1)\r\n-                }} />\r\n+                }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '90%'}} />\r\n             <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642086966725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n     const onPress = () => {\r\n-     disPatch('user', {Email: value1, Password: value2})\r\n+     disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n     }\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642088328963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     setValue1(value1)\r\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n-                style={{borderWidth: 0.5, width: '90%'}} />\r\n+                style={{borderWidth: 0.5, width: '97%'}} />\r\n             <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '100%' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n"
+                },
+                {
+                    "date": 1642088339529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     setValue1(value1)\r\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n-                style={{borderWidth: 0.5, width: '97%'}} />\r\n+                style={{borderWidth: 0.5, width: '95%'}} />\r\n             <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '100%' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n"
+                },
+                {
+                    "date": 1642088355987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '95%'}} />\r\n-            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '100%' }}>\r\n+            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n"
+                },
+                {
+                    "date": 1642088386239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '95%'}} />\r\n-            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%' }}>\r\n+            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n"
+                },
+                {
+                    "date": 1642088409181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,10 @@\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n                         setValue2(value2)\r\n-                    }} /> \r\n+                    }}\r\n+                    style={{width: '100%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642088416878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n                         setValue2(value2)\r\n                     }}\r\n-                    style={{width: '100%'}} /> \r\n+                    style={{width: '90%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642088424442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n                         setValue2(value2)\r\n                     }}\r\n-                    style={{width: '90%'}} /> \r\n+                    style={{width: '95%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642088457919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,16 +22,16 @@\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '95%'}} />\r\n-            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n+            <View style={{ marginHorizontal: 20,flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n                         setValue2(value2)\r\n                     }}\r\n-                    style={{width: '95%'}} /> \r\n+                    style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n"
+                },
+                {
+                    "date": 1642088490392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' }}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088506797,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' }}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%'}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088517632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%'}}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center'}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088534933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center'}}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginTop: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088548224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginTop: 20}}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginHorizontal: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088555770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginHorizontal: 20}}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', margin: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} />\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088568206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', margin: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n-            <Image source={require('../image/text.png')} />\r\n+            <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n         </View>\r\n \r\n     )\r\n }\r\n"
+                },
+                {
+                    "date": 1642088590368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '95%'}} />\r\n-            <View style={{ marginHorizontal: 20,flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n+            <View style={{ marginVertical: 20,flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n"
+                },
+                {
+                    "date": 1642088610592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n                 style={{borderWidth: 0.5, width: '95%'}} />\r\n-            <View style={{ marginVertical: 20,flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n+            <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n                     onChangeText={(value2) => {\r\n@@ -33,9 +33,9 @@\n                     style={{width: '92%'}} /> \r\n                 <Image source={require('../image/hiden.png')} />\r\n             </View>\r\n             <TouchableOpacity onPress={onPress}\r\n-                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', margin: 20}}>\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n         </View>\r\n"
+                },
+                {
+                    "date": 1642088623578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     setValue1(value1)\r\n                 }} \r\n                 value={value1}\r\n                 placeholder=\"Email\"\r\n-                style={{borderWidth: 0.5, width: '95%'}} />\r\n+                style={{borderWidth: 0.5, width: '95%', marginVertical: 20}} />\r\n             <View style={{ flexDirection: 'row', borderWidth: 0.5, width: '95%', alignItems: 'center', justifyContent:'center' }}>\r\n                 <TextInput \r\n                 placeholder=\"Password\"\r\n                     value={value2}\r\n"
+                },
+                {
+                    "date": 1642089014424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,17 @@\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n+    const state = useSelector(state => state.user)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n     }\r\n+    useEffect(() => {\r\n+        if(state.user){\r\n+            navigation.navigate('Main')\r\n+        }\r\n+    })\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n                 source={require('../image/nen.png')}\r\n"
+                },
+                {
+                    "date": 1642089029806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import React, { useState } from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n-import { useDispatch } from \"react-redux\"\r\n+import { useDispatch ,useSelector} from \"react-redux\"\r\n \r\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n"
+                },
+                {
+                    "date": 1642089046644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import React, { useState } from \"react\"\r\n+import React, { useState ,useEffect} from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n import { useDispatch ,useSelector} from \"react-redux\"\r\n \r\n const Login = () => {\r\n"
+                },
+                {
+                    "date": 1642089107338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    const state = useSelector(state => state.user)\r\n+    const state = useSelector(state => state.data)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n     }\r\n     useEffect(() => {\r\n"
+                },
+                {
+                    "date": 1642089120870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    const state = useSelector(state => state.data)\r\n+    \r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n     }\r\n     useEffect(() => {\r\n"
+                },
+                {
+                    "date": 1642089297671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const Login = () => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    \r\n+    const state =useSelector(state=>state.user)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n     }\r\n     useEffect(() => {\r\n"
+                },
+                {
+                    "date": 1642089926052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.user)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n+     console.log(payload)\r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate('Main')\r\n"
+                },
+                {
+                    "date": 1642090065961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      console.log(payload)\r\n     }\r\n     useEffect(() => {\r\n-        if(state.user){\r\n+        if(state){\r\n             navigation.navigate('Main')\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642090186456,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React, { useState ,useEffect} from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n import { useDispatch ,useSelector} from \"react-redux\"\r\n \r\n-const Login = () => {\r\n+const Login = (navigation) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.user)\r\n"
+                },
+                {
+                    "date": 1642090261814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n      console.log(payload)\r\n     }\r\n     useEffect(() => {\r\n         if(state){\r\n-            navigation.navigate('Main')\r\n+            navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n"
+                },
+                {
+                    "date": 1642090355759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React, { useState ,useEffect} from \"react\"\r\n import { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n import { useDispatch ,useSelector} from \"react-redux\"\r\n \r\n-const Login = (navigation) => {\r\n+const Login = ({navigation}) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.user)\r\n"
+                },
+                {
+                    "date": 1642090390642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      console.log(payload)\r\n     }\r\n     useEffect(() => {\r\n-        if(state){\r\n+        if(state.user){\r\n             navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642090445342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.user)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n-     console.log(payload)\r\n+     console.log({payload})\r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate(\"Main\")\r\n"
+                },
+                {
+                    "date": 1642090453393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.user)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n-     console.log({payload})\r\n+     \r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate(\"Main\")\r\n"
+                },
+                {
+                    "date": 1642090490547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        if(state.user){\r\n+        if(state){\r\n             navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642090502233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        if(state){\r\n+        if(state.user){\r\n             navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642090859527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,15 +5,15 @@\n const Login = ({navigation}) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    const state =useSelector(state=>state.user)\r\n+    const state =useSelector(state=>state)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        if(state.user){\r\n+        if(state){\r\n             navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642091117144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,15 +5,15 @@\n const Login = ({navigation}) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    const state =useSelector(state=>state)\r\n+    const state =useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        if(state){\r\n+        if(state.user){\r\n             navigation.navigate(\"Main\")\r\n         }\r\n     })\r\n     return (\r\n"
+                },
+                {
+                    "date": 1642091187362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n-     \r\n+     console.log({payload})\r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate(\"Main\")\r\n"
+                },
+                {
+                    "date": 1642091306359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n-     console.log({payload})\r\n+     console.log(state)\r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate(\"Main\")\r\n"
+                },
+                {
+                    "date": 1642091456479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     const disPatch= useDispatch()\r\n     const state =useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n      disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n-     console.log(state)\r\n+     \r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n             navigation.navigate(\"Main\")\r\n"
+                },
+                {
+                    "date": 1642091602723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n const Login = ({navigation}) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n-    const state =useSelector(state=>state.reducer)\r\n+    const state = useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n-     disPatch({type : 'user', payload: {Email: value1, Password: value2}})\r\n+     disPatch({type : 'Login_Action', payload: {Email: value1, Password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n"
+                },
+                {
+                    "date": 1642092002068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     const [value2, setValue2] = useState('')\r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n-     disPatch({type : 'Login_Action', payload: {Email: value1, Password: value2}})\r\n+     disPatch({type : 'Login_Action', payload: {email: value1, password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n         if(state.user){\r\n"
+                },
+                {
+                    "date": 1642092298690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,13 @@\n             <TouchableOpacity onPress={onPress}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n+\r\n+            <TouchableOpacity onPress={() => {}}\r\n+                style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n+                <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n+            </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n         </View>\r\n \r\n     )\r\n"
+                },
+                {
+                    "date": 1642092327754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,11 @@\n      disPatch({type : 'Login_Action', payload: {email: value1, password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        if(state.user){\r\n-            navigation.navigate(\"Main\")\r\n-        }\r\n+        // if(state.user){\r\n+        //     navigation.navigate(\"Main\")\r\n+        // }\r\n     })\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642092339950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n     useEffect(() => {\r\n         // if(state.user){\r\n         //     navigation.navigate(\"Main\")\r\n         // }\r\n+        console.log('TEST')\r\n     })\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642092368194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,13 @@\n \r\n const Login = ({navigation}) => {\r\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n+\r\n+\r\n+    const [test, setTest] = useState('')\r\n+\r\n+\r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n     const onPress = () => {\r\n      disPatch({type : 'Login_Action', payload: {email: value1, password: value2}})\r\n"
+                },
+                {
+                    "date": 1642092385175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n \r\n-            <TouchableOpacity onPress={() => {}}\r\n+            <TouchableOpacity onPress={() => {setTest(Math.random())}}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n             <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n"
+                },
+                {
+                    "date": 1642092461406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,8 +54,10 @@\n             <TouchableOpacity onPress={() => {setTest(Math.random())}}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n+\r\n+            <Text>{test}</Text>\r\n             <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n         </View>\r\n \r\n     )\r\n"
+                },
+                {
+                    "date": 1642092565177,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,12 @@\n         //     navigation.navigate(\"Main\")\r\n         // }\r\n         console.log('TEST')\r\n     })\r\n+\r\n+\r\n+    \r\n+\r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n                 source={require('../image/nen.png')}\r\n"
+                },
+                {
+                    "date": 1642092833180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,11 @@\n         console.log('TEST')\r\n     })\r\n \r\n \r\n-    \r\n+    useEffect(() => {\r\n+        console.log('TEST 2')\r\n+    }, [test])\r\n \r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642092873054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n     const [value2, setValue2] = useState('')\r\n \r\n \r\n     const [test, setTest] = useState('')\r\n+    const [test2, setTest] = useState('')\r\n \r\n \r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n"
+                },
+                {
+                    "date": 1642092883952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     const [value2, setValue2] = useState('')\r\n \r\n \r\n     const [test, setTest] = useState('')\r\n-    const [test2, setTest] = useState('')\r\n+    const [test2, setTest2] = useState('')\r\n \r\n \r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n@@ -57,9 +57,9 @@\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n \r\n-            <TouchableOpacity onPress={() => {setTest(Math.random())}}\r\n+            <TouchableOpacity onPress={() => {setTest2(Math.random())}}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n \r\n"
+                },
+                {
+                    "date": 1642093006529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n \r\n \r\n     useEffect(() => {\r\n         console.log('TEST 2')\r\n-    }, [test])\r\n+    }, [test, test2])\r\n \r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642093036334,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n \r\n \r\n     const [test, setTest] = useState('')\r\n     const [test2, setTest2] = useState('')\r\n+    const [test3, setTest3] = useState('')\r\n \r\n \r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n@@ -57,9 +58,9 @@\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n \r\n-            <TouchableOpacity onPress={() => {setTest2(Math.random())}}\r\n+            <TouchableOpacity onPress={() => {setTest3(Math.random())}}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n \r\n"
+                },
+                {
+                    "date": 1642093065564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,9 @@\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n             </TouchableOpacity>\r\n \r\n-            <TouchableOpacity onPress={() => {setTest3(Math.random())}}\r\n+            <TouchableOpacity onPress={() => {setTest(Math.random())}}\r\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n \r\n"
+                },
+                {
+                    "date": 1642093966234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,11 @@\n     const [value1, setValue1] = useState('')\r\n     const [value2, setValue2] = useState('')\r\n \r\n \r\n-    const [test, setTest] = useState('')\r\n-    const [test2, setTest2] = useState('')\r\n-    const [test3, setTest3] = useState('')\r\n+    // const [test, setTest] = useState('')\r\n+    // const [test2, setTest2] = useState('')\r\n+    // const [test3, setTest3] = useState('')\r\n \r\n \r\n     const disPatch= useDispatch()\r\n     const state = useSelector(state=>state.reducer)\r\n@@ -18,18 +18,18 @@\n      disPatch({type : 'Login_Action', payload: {email: value1, password: value2}})\r\n      \r\n     }\r\n     useEffect(() => {\r\n-        // if(state.user){\r\n-        //     navigation.navigate(\"Main\")\r\n-        // }\r\n-        console.log('TEST')\r\n+        if(state.user){\r\n+            navigation.navigate(\"Main\")\r\n+        }\r\n+        // console.log('TEST')\r\n     })\r\n \r\n \r\n-    useEffect(() => {\r\n-        console.log('TEST 2')\r\n-    }, [test, test2])\r\n+    // useEffect(() => {\r\n+    //     console.log('TEST 2')\r\n+    // }, [test, test2])\r\n \r\n     return (\r\n         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 20 }}>\r\n             <Image \r\n"
+                },
+                {
+                    "date": 1642093977938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n                 style={{ backgroundColor: '#1E57F1', width: '95%' , height: '5%', alignItems: 'center', justifyContent: 'center', marginVertical: 20}}>\r\n                 <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>TEST</Text>\r\n             </TouchableOpacity>\r\n \r\n-            <Text>{test}</Text>\r\n+            {/* <Text>{test}</Text> */}\r\n             <Image source={require('../image/text.png')} resizeMode=\"contain\"/>\r\n         </View>\r\n \r\n     )\r\n"
+                }
+            ],
+            "date": 1642084521902,
+            "name": "Commit-0",
+            "content": "import React, { useState } from \"react\"\r\nimport { TextInput, View, Image, TouchableOpacity, Text } from \"react-native\"\r\n\r\nconst Login = () => {\r\n    const [value1, setValue] = useState('')\r\n    const [value2, setValue2] = useState('')\r\n    const onPress = () => {\r\n\r\n    }\r\n    return (\r\n        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>\r\n            <Image \r\n                source={require('../image/nen.png')}\r\n                resizeMode=\"contain\" />\r\n            <Image source={require('../image/sally.png')}\r\n                resizeMode=\"contain\" />\r\n            <TextInput\r\n                onChangeText={ }\r\n                value={value1}\r\n                placeholder=\" Email\"\r\n                style={{borderWidth: 0.5}} />\r\n            <View style={{ flexDirection: 'row', borderWidth: 0.5 }}>\r\n                <TextInput placeholder=\"Password\"\r\n                    value={value2}\r\n                    onChangeText={ } />\r\n                <Image source={require('../image/hiden.png')} />\r\n            </View>\r\n            <TouchableOpacity onPress={onPress}\r\n                style={{ backgroundColor: '#1E57F1', width: '100%' }}>\r\n                <Text style={{ color: 'white', fontSize: 18, fontWeight: '400' }}>Login</Text>\r\n            </TouchableOpacity>\r\n            <Image source={require('../image/text.png')} />\r\n        </View>\r\n\r\n    )\r\n}\r\n\r\nexport default Login"
+        }
+    ]
+}

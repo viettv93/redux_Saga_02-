@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/action/Login.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1642087065071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1642087084712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n export const login = (payload) => {\r\n     return {\r\n-        action: 'LOGIN',\r\n+        action: 'Login',\r\n         payload\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642087137889,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-export const login = (payload) => {\r\n+export const Login_Action = (payload) => {\r\n     return {\r\n         action: 'Login',\r\n         payload\r\n     }\r\n"
+                },
+                {
+                    "date": 1642087159795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n export const Login_Action = (payload) => {\r\n     return {\r\n-        action: 'Login',\r\n+        action: 'Login_Action',\r\n         payload\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642090159291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n export const Login_Action = (payload) => {\r\n     return {\r\n         action: 'Login_Action',\r\n-        payload\r\n+        payload: payload\r\n     }\r\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1642087065071,
+            "name": "Commit-0",
+            "content": "export const login = (payload) => {\r\n    return {\r\n        action: 'LOGIN',\r\n        payload\r\n    }\r\n}"
+        }
+    ]
+}

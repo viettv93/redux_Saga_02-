@@ -1,0 +1,58 @@
+{
+    "sourceFile": "src/reducer/Reducer.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1642085366915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1642086433469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const initialState = {\r\n-user: {name: value1, passWord: value2}\r\n+user: null\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                },
+                {
+                    "date": 1642088246458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n-        return { ...state,  user: action.user }\r\n+        return { ...state,  user : action.user }\r\n         default:\r\n             return state\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1642089206540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n-        return { ...state,  user : action.user }\r\n+        return { ...state,  user : action.user.data }\r\n         default:\r\n             return state\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1642089355321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const initialState = {\r\n-user: null\r\n+user: {}\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                },
+                {
+                    "date": 1642089439194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const initialState = {\r\n-user: {}\r\n+user: null\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                },
+                {
+                    "date": 1642089523847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n-        return { ...state,  user : action.user.data }\r\n+        return { ...state,  user : action.user }\r\n         default:\r\n             return state\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1642090115471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n+import { ViewPropTypes } from \"react-native\"\r\n+\r\n const initialState = {\r\n-user: null\r\n+user: {email: viet, password:123 }\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                },
+                {
+                    "date": 1642090129192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { ViewPropTypes } from \"react-native\"\r\n \r\n const initialState = {\r\n-user: {email: viet, password:123 }\r\n+user: {email: 'viet', password:123 }\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                },
+                {
+                    "date": 1642090150522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import { ViewPropTypes } from \"react-native\"\r\n-\r\n const initialState = {\r\n user: {email: 'viet', password:123 }\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n"
+                },
+                {
+                    "date": 1642090569398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n const initialState = {\r\n-user: {email: 'viet', password:123 }\r\n+user: null\r\n }\r\n const Reducer = (state = initialState, action) => {\r\n     switch (action.type) {\r\n         case 'Login_Action':\r\n"
+                }
+            ],
+            "date": 1642085366915,
+            "name": "Commit-0",
+            "content": "const initialState = {\r\nuser: {name: value1, passWord: value2}\r\n}\r\nconst Reducer = (state = initialState, action) => {\r\n    switch (action.type) {\r\n        case 'Login_Action':\r\n        return { ...state,  user: action.user }\r\n        default:\r\n            return state\r\n    }\r\n}\r\nexport default Reducer"
+        }
+    ]
+}
